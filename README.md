@@ -1,3 +1,3 @@
-    # KAKAO Clone 2024 UPdate
+# KAKAO Clone 2024 UPdate
 
-    CSS got so much better!
+HTML and CSS are so much fun!
