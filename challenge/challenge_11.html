@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>challenge_11</title>
+    <style>
+      body {
+        width: 340px;
+        height: 750px;
+        position: relative;
+        /* font-family: "Gowun Dodum", sans-serif; */
+        font-family: "Poppins", sans-serif;
+        font-style: normal;
+      }
+      header {
+        height: 100px;
+        background-color: #ffce33;
+        display: flex;
+        align-items: center;
+        font-family: "Gowun Dodum", sans-serif;
+        /* justify-content: center; */
+        /* padding: 5px 3px; */
+      }
+      .status-bar__column {
+        width: 33%;
+        margin: 0 10px;
+      }
+      .status-bar__column:nth-child(2) {
+        display: flex;
+        justify-content: center;
+      }
+      .status-bar__column:last-child {
+        display: flex;
+        justify-content: flex-end;
+        /* align-items: center; */
+      }
+      .status-bar__column span {
+        font-weight: 600;
+      }
+      .warpper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        width: 100%;
+        transform: translateY(-50%);
+      }
+      .search-bar {
+        width: 95%;
+        height: 50px;
+        border: 1px solid;
+        border-radius: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 0;
+        background-color: white;
+        box-shadow: 0 10px 35px rgba(0, 0, 0, 0.05),
+          0 6px 6px rgba(0, 0, 0, 0.1);
+        transition: box-shadow 0.1s linear;
+      }
+      /* hover시 색상변경 */
+      .search-bar:hover {
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 6px 4px rgba(0, 0, 0, 0.2);
+      }
+      #search-bar__searchbooks {
+        /* 배경 투명하게 */
+        /* background-color: transparent; */
+        margin-left: 5px;
+        width: 80%;
+        border: 0;
+      }
+      #search-bar__searchbooks:focus {
+        outline: none;
+      }
+      #search-bar__searchbooks::placeholder {
+        color: rgb(211, 206, 206);
+      }
+      .fa-search {
+        color: rgb(211, 206, 206);
+        cursor: pointer;
+      }
+
+      .title-bar {
+        margin: 40px 0 0 10px;
+        font-weight: 600;
+        font-size: 22px;
+      }
+      .mainBook-bar {
+        margin: 10px 0 0 10px;
+        width: 100%;
+        height: 180px;
+        display: flex;
+      }
+      .mainBook-bar img {
+        border-radius: 10px;
+      }
+      .mainBook-bar__column {
+        display: flex;
+        flex-direction: column;
+        margin-left: 15px;
+      }
+      .mainBook-bar__column:nth-child(1) {
+        font-weight: 400;
+        font-size: 20px;
+        margin: 0;
+      }
+      .mainBook-bar__column span:nth-child(2) {
+        font-size: 13px;
+        color: rgba(0, 0, 0, 0.4);
+        margin-top: 5px;
+      }
+      .mainBook-bar__column__star {
+        margin-top: 8px;
+        width: 80px;
+      }
+      .category_div {
+        display: flex;
+        justify-content: center;
+        margin-top: 13px;
+      }
+      .category {
+        width: 80px;
+        background-color: #f7f7f7;
+        border-radius: 10px;
+      }
+      .category span {
+        font-size: 12px;
+        font-weight: 600;
+      }
+      .icon_div {
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-between;
+      }
+      .icon_div__bookmark_circle {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: #ffce33;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+      }
+      .icon_div_bookNow {
+        width: 100px;
+        height: 30px;
+        background-color: black;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+      }
+      .icon_div_bookNow span {
+        color: white;
+        font-weight: 200;
+        font-size: 12px;
+      }
+      .title-bar__top {
+        margin: 20px 0 0 10px;
+        font-weight: 600;
+        font-size: 22px;
+      }
+      .top-bar {
+        margin: 10px 0 20px 10px; /* bottom-bar와 간격 추가 */
+        display: flex;
+        width: 95%;
+        height: 120px;
+        /* align-items: center; */
+        justify-content: space-between;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding-bottom: 20px; /* 스크롤바와 콘텐츠 간격 추가 */
+      }
+      .top-bar__content {
+        flex: 0 0 80px; /* 각 아이템의 기본 크기를 고정 */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-right: 10px; /* 각 아이템 사이에 간격을 줌 */
+      }
+      .top-bar__content img:nth-child(1) {
+        width: 70px;
+        height: 105px;
+      }
+      .top-bar__content img:nth-child(2) {
+        margin-top: 5px;
+        width: 60px;
+        height: 10px;
+      }
+      .bottom-bar {
+        margin: 10px 0 0 10px;
+        width: 92%;
+        height: auto;
+        display: flex;
+
+        font-family: "Gowun Dodum", sans-serif;
+      }
+      .bottom-bar img {
+        width: 110px;
+        height: 110px;
+        margin-right: 10px;
+      }
+      .bottom-bar p:nth-child(1) {
+        margin: 0;
+        font-size: 10px;
+        font-weight: 600;
+      }
+
+      .bottom-bar p:nth-child(2) {
+        font-size: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="status-bar">
+      <div class="status-bar__column">
+        <i class="fas fa-bars"></i>
+      </div>
+      <div class="status-bar__column">
+        <span>library</span>
+      </div>
+      <div class="status-bar__column">
+        <i class="fas fa-shopping-basket"></i>
+      </div>
+    </header>
+
+    <div class="warpper">
+      <form class="search-bar">
+        <input id="search-bar__searchbooks" placeholder="Search books" />
+        <i class="fas fa-search"></i>
+      </form>
+    </div>
+    <div class="title-bar">
+      <span>Book of the day</span>
+    </div>
+    <div class="mainBook-bar">
+      <img src="jpg/리틀라이프.jpg" />
+      <div class="mainBook-bar__column">
+        <span class="mainBook-bar__column title">A LITTLE LIFE</span>
+        <span>한야 야니기하라</span>
+        <img class="mainBook-bar__column__star" src="jpg/별점.png" />
+        <div class="category_div">
+          <div class="category">
+            <span> 베스트 셀러 </span>
+          </div>
+          <div class="category">
+            <span> 영미소설일반 </span>
+          </div>
+        </div>
+        <div class="icon_div">
+          <div class="icon_div__bookmark_circle">
+            <i class="fas fa-bookmark"></i>
+          </div>
+          <div class="icon_div_bookNow">
+            <span>Book Now</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="title-bar__top">
+      <span>Top Adventures</span>
+    </div>
+    <div class="top-bar">
+      <div class="top-bar__content">
+        <img src="jpg/9791192300818.jpg" />
+        <img src="jpg/별점.png" />
+      </div>
+      <div class="top-bar__content">
+        <img src="jpg/불변의법칙.jpg" />
+        <img src="jpg/별점.png" />
+      </div>
+      <div class="top-bar__content">
+        <img src="jpg/9791193282045.jpg" />
+        <img src="jpg/별점.png" />
+      </div>
+      <div class="top-bar__content">
+        <img src="jpg/선업튀.jpg" />
+        <img src="jpg/별점.png" />
+      </div>
+      <div class="top-bar__content">
+        <img src="jpg/2.jpg" />
+        <img src="jpg/별점.png" />
+      </div>
+      <div class="top-bar__content">
+        <img src="jpg/3.jpg" />
+        <img src="jpg/별점.png" />
+      </div>
+    </div>
+    <div class="title-bar__top">
+      <span>Popular authors</span>
+    </div>
+    <div class="bottom-bar">
+      <img src="jpg/니꼴라스.jpg" />
+      <div class="bottom-bar__span">
+        <p>안녕? 나는 노마드코더 유튜브 채널을 운영하는 니꼴라스라고해!</p>
+        <p>
+          나는 9살부터 독학으로 코딩을 공부했어. 13살에 개발자로 입사 제안을
+          받았지만 ‘자유가 더욱 중요하다'는 생각에 이런 제안도 뻥 차버린
+          자유로운 영혼의 소유자이기도 하지. 많은 사람들이 코딩을 배워서 나처럼
+          원하는 곳에서, 좋아하는 일을 하며 살 수 있으면 좋겠어. 유튜브 채널
+          노마드코더는 그런 사람들을 돕고 싶어서 시작했어. 그리고~ 나는 김치,
+          삼겹살을 코딩만큼 좋아해.
+        </p>
+      </div>
+    </div>
+    <script
+      src="https://kit.fontawesome.com/7e60668ea9.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

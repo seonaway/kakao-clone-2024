@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>challenge_10</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;700&display=swap");
+      body {
+        width: 400px;
+        height: 800px;
+        border: 5px solid #00c6ad;
+        font-family: "Ubuntu", sans-serif;
+        font-style: normal;
+      }
+      .bar {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .header_bar {
+        position: relative;
+        height: 130px;
+      }
+      .header_bar svg {
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        left: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .header_bar h1 {
+        margin: 0;
+        font-weight: 700;
+        font-size: 30px;
+      }
+      .random_bar {
+        height: 140px;
+      }
+      .random_bar__image {
+        width: 140px;
+        height: 140px;
+        border: 2px solid;
+        background-color: #ffbd11;
+        border-radius: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .random_bar__image i {
+        color: white;
+      }
+      .random_bar__text {
+        margin-left: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-bottom: 10px;
+      }
+      .random_bar__text span:first-child {
+        font-weight: 700;
+        font-size: 50px;
+      }
+      .random_bar__text span:last-child {
+        margin-top: 10px;
+        font-weight: 500;
+      }
+      .icon_bar {
+        height: 140px;
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+      .icon_bar__heart,
+      .icon_bar__play {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 2px solid;
+        box-shadow: 0px 4px 0 0;
+        box-shadow: 0px 4px 0 0;
+      }
+      .icon_bar_circle {
+        width: 200px;
+        display: flex;
+        justify-content: flex-start;
+        margin: 0 20px;
+        gap: 20px; /* 간격을 줄이기 위해 추가 */
+      }
+      .icon_bar__play {
+        width: 190px;
+        height: 60px;
+        border-radius: 20px;
+        margin-left: 20px;
+      }
+      .icon_bar__play span {
+        margin-left: 5px;
+        font-weight: 700;
+        font-size: 19px;
+      }
+      .icon_bar__heart {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+      }
+      .music_list {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+      }
+      .music_bar {
+        width: 100%;
+        height: 95px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        position: relative;
+      }
+      .music_bar__color {
+        width: 60px;
+        height: 60px;
+        border: 1px solid;
+        border-radius: 10px;
+        position: absolute;
+        left: 20px;
+      }
+      .music_bar:nth-child(1) .music_bar__color {
+        background-color: tomato;
+      }
+      .music_bar:nth-child(2) .music_bar__color {
+        background-color: #ff89bb;
+      }
+      .music_bar:nth-child(3) .music_bar__color {
+        background-color: #1947e5;
+      }
+      .music_bar:nth-child(4) .music_bar__color {
+        background-color: #00c6ad;
+      }
+
+      .music_bar__text {
+        left: 100px;
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+      }
+      .music_bar__text span:first-child {
+        font-weight: 700;
+        font-size: 25px;
+      }
+      .music_bar__text span:last-child {
+        margin-top: 8px;
+        opacity: 0.9;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bar header_bar">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6"
+        fill="none"
+        viewBox="0 0 25 25"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M6 18L18 6M6 6l12 12"
+        />
+      </svg>
+      <h1 class="header__text">Playlist</h1>
+    </div>
+    <div class="bar random_bar">
+      <div class="random_bar__image">
+        <i class="far fa-image fa-4x"></i>
+      </div>
+      <div class="random_bar__text">
+        <span>Random<br />Love</span>
+        <span>by Divay Kapoor</span>
+      </div>
+    </div>
+    <div class="bar icon_bar">
+      <div class="icon_bar__play">
+        <i class="fas fa-play"></i>
+        <span>Play</span>
+      </div>
+      <div class="bar icon_bar_circle">
+        <div class="icon_bar__heart">
+          <i class="fas fa-heart"></i>
+        </div>
+        <div class="icon_bar__heart">
+          <i class="fas fa-plus"></i>
+        </div>
+      </div>
+    </div>
+    <ul class="music_list">
+      <li class="bar music_bar">
+        <div class="music_bar__color"></div>
+        <div class="music_bar__text">
+          <span>Matagrgasti</span>
+          <span>Mohit Chauhan</span>
+        </div>
+      </li>
+      <li class="bar music_bar">
+        <div class="music_bar__color"></div>
+        <div class="music_bar__text">
+          <span>Attitude</span>
+          <span>Lewis OfMan · Attitude</span>
+        </div>
+      </li>
+      <li class="bar music_bar">
+        <div class="music_bar__color"></div>
+        <div class="music_bar__text">
+          <span>Try Everything</span>
+          <span>Shakira · Zootopia</span>
+        </div>
+      </li>
+      <li class="bar music_bar">
+        <div class="music_bar__color"></div>
+        <div class="music_bar__text">
+          <span>Sunflower</span>
+          <span>Joseph Vincent · Sunflower</span>
+        </div>
+      </li>
+    </ul>
+
+    <!-- image -->
+    <script
+      src="https://kit.fontawesome.com/7e60668ea9.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
